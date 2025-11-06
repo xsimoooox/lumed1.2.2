@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Détails Événement - lumed</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="lumed Logo" class="nav-logo-img">
+                    <div class="logo-icon">lumed</div>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="events.html" class="nav-link active">Events</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="members.html" class="nav-link">Members</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <label for="dark-mode-toggle" class="toggle-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="lumed-logo">
+                <div class="logo-circle"></div>
+                <div class="logo-text">lumed</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Event Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 id="event-title">Titre de l'événement</h1>
+            <div id="event-meta" class="event-meta-header"></div>
+        </div>
+    </section>
+
+    <!-- Event Details -->
+    <section class="section">
+        <div class="container">
+            <div class="event-details-grid">
+                <!-- Event Main Content -->
+                <div class="event-main-content">
+                    <div id="event-media" class="event-media-container"></div>
+                    
+                    <div class="event-content-section">
+                        <h2>Description de l'événement</h2>
+                        <div id="event-description" class="event-full-description"></div>
+                    </div>
+
+                    <div class="event-content-section">
+                        <h2>Programme détaillé</h2>
+                        <div id="event-schedule" class="event-schedule"></div>
+                    </div>
+
+                    <div class="event-content-section">
+                        <h2>Objectifs d'apprentissage</h2>
+                        <div id="event-objectives" class="event-objectives"></div>
+                    </div>
+                </div>
+
+                <!-- Event Sidebar -->
+                <div class="event-sidebar">
+                    <div class="event-info-card">
+                        <h3>Informations clés</h3>
+                        <ul id="event-key-info" class="event-info-list">
+                            <li id="event-date-info"><i class="fas fa-calendar"></i> <span>Date</span></li>
+                            <li id="event-time-info"><i class="fas fa-clock"></i> <span>Horaire</span></li>
+                            <li id="event-location-info"><i class="fas fa-map-marker-alt"></i> <span>Lieu</span></li>
+                            <li id="event-type-info"><i class="fas fa-tag"></i> <span>Type</span></li>
+                            <li id="event-category-info"><i class="fas fa-folder"></i> <span>Catégorie</span></li>
+                            <li id="event-capacity-info"><i class="fas fa-users"></i> <span>Capacité</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="event-registration-card">
+                        <h3>Inscription</h3>
+                        <p id="event-registration-status"></p>
+                        <button id="register-button" class="btn btn-primary">S'inscrire maintenant</button>
+                    </div>
+
+                    <div class="event-contact-card">
+                        <h3>Contact</h3>
+                        <p>Pour plus d'informations, contactez-nous:</p>
+                        <ul class="event-contact-list">
+                            <li><i class="fas fa-envelope"></i> lumed@uemf.org</li>
+                            <li><i class="fas fa-phone"></i> +212 XXX XXX XXX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-navigation">
+                <a href="events.html" class="btn btn-outline">
+                    <i class="fas fa-arrow-left"></i> Retour aux événements
+                </a>
+                <div class="event-share">
+                    <span>Partager:</span>
+                    <a href="#" class="share-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="share-btn"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="share-btn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="js/content.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function getQueryParam(name) {
+                const url = new URL(window.location.href);
+                return url.searchParams.get(name);
+            }
+
+            const eventId = getQueryParam('id');
+            console.log('event-details: parsed id =', eventId);
+
+            const events = JSON.parse(localStorage.getItem('avnEvents')) || [];
+            console.log('event-details: avnEvents from localStorage =', events.map(e => ({ id: e.id, title: e.title })));
+
+            if (eventId) {
+                const event = events.find(e => String(e.id) === String(eventId));
+                if (event) {
+                    // Set the page title
+                    document.title = `${event.title} - lumed Events`;
+
+                    // Update basic event info
+                    document.getElementById('event-title').textContent = event.title;
+                    document.getElementById('event-meta').innerHTML = `
+                        <div class="meta-tag">${new Date(event.date).toLocaleDateString('fr-FR', { 
+                            weekday: 'long', 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: 'numeric' 
+                        })}</div>
+                        ${event.location ? `<div class="meta-tag"><i class="fas fa-map-marker-alt"></i> ${event.location}</div>` : ''}
+                        ${event.type ? `<div class="meta-tag"><i class="fas fa-tag"></i> ${event.type}</div>` : ''}
+                    `;
+
+                    // Update detailed description with formatting
+                    const detailedDescription = event.detailedDescription || event.description || '';
+                    document.getElementById('event-description').innerHTML = detailedDescription.split('\n').map(para => `<p>${para}</p>`).join('');
+
+                    // Update schedule if available
+                    const schedule = event.schedule || [
+                        { time: '09:00', activity: 'Accueil des participants' },
+                        { time: '09:30', activity: 'Début de l\'événement' },
+                        { time: '11:00', activity: 'Pause café' },
+                        { time: '12:30', activity: 'Déjeuner' },
+                        { time: '14:00', activity: 'Sessions de l\'après-midi' },
+                        { time: '17:00', activity: 'Clôture' }
+                    ];
+                    document.getElementById('event-schedule').innerHTML = `
+                        <div class="timeline-schedule">
+                            ${schedule.map(item => `
+                                <div class="schedule-item">
+                                    <div class="schedule-time">${item.time}</div>
+                                    <div class="schedule-activity">${item.activity}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+
+                    // Update learning objectives if available
+                    const objectives = event.objectives || [
+                        'Comprendre les concepts clés',
+                        'Acquérir des compétences pratiques',
+                        'Réseauter avec d\'autres participants',
+                        'Participer à des ateliers interactifs'
+                    ];
+                    document.getElementById('event-objectives').innerHTML = `
+                        <ul class="objectives-list">
+                            ${objectives.map(obj => `<li><i class="fas fa-check-circle"></i> ${obj}</li>`).join('')}
+                        </ul>
+                    `;
+
+                    // Update key information
+                    document.getElementById('event-date-info').innerHTML = `<i class="fas fa-calendar"></i> <span>${new Date(event.date).toLocaleDateString('fr-FR', { dateStyle: 'long' })}</span>`;
+                    document.getElementById('event-time-info').innerHTML = `<i class="fas fa-clock"></i> <span>${event.time || '09:00 - 17:00'}</span>`;
+                    document.getElementById('event-location-info').innerHTML = `<i class="fas fa-map-marker-alt"></i> <span>${event.location || 'UEMF'}</span>`;
+                    document.getElementById('event-type-info').innerHTML = `<i class="fas fa-tag"></i> <span>${event.type || 'Événement'}</span>`;
+                    document.getElementById('event-category-info').innerHTML = `<i class="fas fa-folder"></i> <span>${event.category || 'Général'}</span>`;
+                    document.getElementById('event-capacity-info').innerHTML = `<i class="fas fa-users"></i> <span>${event.capacity || 'Places limitées'}</span>`;
+
+                    // Update registration status
+                    const registrationStatus = event.registrationStatus || 'open';
+                    const registrationButton = document.getElementById('register-button');
+                    document.getElementById('event-registration-status').textContent = 
+                        registrationStatus === 'open' ? 'Les inscriptions sont ouvertes' :
+                        registrationStatus === 'closed' ? 'Les inscriptions sont fermées' :
+                        'Liste d\'attente disponible';
+                    registrationButton.disabled = registrationStatus !== 'open';
+                    registrationButton.textContent = 
+                        registrationStatus === 'open' ? 'S\'inscrire maintenant' :
+                        registrationStatus === 'closed' ? 'Inscriptions fermées' :
+                        'Rejoindre la liste d\'attente';
+
+                    // Handle media content
+                    if (event.mediaType === 'image' && event.mediaUrl) {
+                        document.getElementById('event-media').innerHTML = `<img src="${event.mediaUrl}" alt="${event.title}" class="media-content">`;
+                    } else if (event.mediaType === 'youtube' && event.mediaUrl) {
+                        // Convert watch URL to embed URL if needed
+                        const embedUrl = event.mediaUrl.replace('watch?v=', 'embed/');
+                        document.getElementById('event-media').innerHTML = `
+                            <div class="video-container">
+                                <iframe src="${embedUrl}" 
+                                        frameborder="0" 
+                                        allowfullscreen
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                                </iframe>
+                            </div>`;
+                    } else if (event.mediaType === 'video' && event.mediaUrl) {
+                        document.getElementById('event-media').innerHTML = `
+                            <div class="video-container">
+                                <video controls class="media-content">
+                                    <source src="${event.mediaUrl}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>`;
+                    }
+                } else {
+                    document.getElementById('event-title').textContent = 'Événement introuvable';
+                }
+            } else {
+                document.getElementById('event-title').textContent = 'Aucun événement sélectionné';
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">lumed</div>
+                    </div>
+                    <p class="footer-description">Association of Visionary Navigators at UEMF - Bridging technology and innovation for a better future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> lumed@uemf.org</p>
+                        <p><i class="fas fa-map-marker-alt"></i> UEMF, Fès, Morocco</p>
+                        <p><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 lumed Club - All Rights Reserved. Designed by lumed Creative Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

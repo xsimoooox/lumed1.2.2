@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article - AVN</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Keeping original gallery styles for article display */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        .gallery-item { position: relative; border-radius: 10px; overflow: hidden; height: 300px; transition: all 0.3s ease; background: white; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: #8b5cf6; }
+        .gallery-media img, .gallery-media video { width:100%; height:100%; object-fit:cover; }
+        .gallery-overlay { position:absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); display:flex; flex-direction:column; justify-content:flex-end; padding:20px; opacity:0; transition:opacity 0.3s ease; color:white; }
+        .gallery-item:hover .gallery-overlay { opacity:1; }
+        .filter-buttons { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-bottom:30px; }
+        .filter-btn { padding:10px 20px; background:white; border:1px solid #e2e8f0; border-radius:8px; cursor:pointer; }
+        .filter-btn.active, .filter-btn:hover { background:#8b5cf6; color:white; border-color:#8b5cf6; }
+
+        /* Gallery styles only */
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="lumed-logo">
+                <div class="logo-circle"></div>
+                <div class="logo-text">lumed</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader theme handled globally by js/main.js (no inline preloader script) -->
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <div class="logo-icon">AVN</div>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="members.html" class="nav-link">Members</a>
+                <a href="article.html" class="nav-link active">Article</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <label for="dark-mode-toggle" class="toggle-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Article</h1>
+            <p>Discover our events and projects through images and videos</p>
+        </div>
+    </section>
+
+    <!-- Filter Buttons -->
+    <section id="gallery-filter" class="section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Media</button>
+                <button class="filter-btn" data-filter="image">Images</button>
+                <button class="filter-btn" data-filter="video">Videos</button>
+                <button class="filter-btn" data-filter="youtube">YouTube</button>
+                <button class="filter-btn" data-filter="events">Events</button>
+                <button class="filter-btn" data-filter="projects">Projects</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Grid (keeps original gallery ids/classes for JS compatibility) -->
+    <section id="articles-section" class="section section-dark">
+        <div class="container">
+            <h2>Articles</h2>
+            <div id="articles-list" class="gallery-grid">
+                <div class="loading-message"><i class="fas fa-spinner fa-spin"></i> Chargement des articles...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- No Media Message -->
+    <section id="no-media" class="section" style="display:none;">
+        <div class="container">
+            <div class="no-media-message">
+                <i class="fas fa-images"></i>
+                <h3>No media available</h3>
+                <p>The article section will be updated soon with content from our events and projects.</p>
+                <a href="events.html" class="btn btn-primary" style="margin-top:20px;"><i class="fas fa-calendar"></i> View our events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo"><div class="logo-icon">AVN</div></div>
+                    <p class="footer-description">Association of Visionary Navigators at UEMF - Bridging technology and innovation for a better future.</p>
+                    <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="article.html">Article</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> avn@uemf.org</p>
+                        <p><i class="fas fa-map-marker-alt"></i> UEMF, Fès, Morocco</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2025 AVN Club - All Rights Reserved. Designed by AVN Creative Team</p></div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="js/main.js"></script>
+    <script src="js/content.js"></script>
+    <script>
+        // Attendre que le DOM soit chargé
+        document.addEventListener('DOMContentLoaded', function() {
+            // D'abord charger les articles
+            loadArticlesPublic('articles-list');
+            
+            // Forcer la fin du preloader après un délai maximum
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(function() {
+                        preloader.style.display = 'none';
+                    }, 500);
+                }
+            }, 2000); // Attendre maximum 2 secondes
+        });
+
+        // Backup : si tout est chargé mais le preloader est toujours visible
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader && preloader.style.display !== 'none') {
+                preloader.style.opacity = '0';
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>

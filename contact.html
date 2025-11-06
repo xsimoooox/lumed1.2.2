@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AVN</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="lumed-logo">
+                <div class="logo-circle"></div>
+                <div class="logo-text">lumed</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="images/avn-logo.png" alt="AVN Logo" class="logo-image">
+                    <div class="logo-text-nav">AVN</div>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="members.html" class="nav-link">Members</a> 
+                <a href="article.html" class="nav-link">Article</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <label for="dark-mode-toggle" class="toggle-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with AVN - We'd love to hear from you</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact-section" class="section">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>Have questions about AVN, want to collaborate, or interested in joining our community? Reach out to us!</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>Email Us</h3>
+                                <p>avn@uemf.org</p>
+                                <span>We'll respond within 24 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>Visit Us</h3>
+                                <p>UEMF Campus, Fès, Morocco</p>
+                                <span>Euro-Mediterranean University of Fez</span>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>Office Hours</h3>
+                                <p>Monday - Friday</p>
+                                <span>9:00 AM - 6:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-contact">
+                        <h3>Follow Us</h3>
+                        <div class="social-links-large">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="contact-form">
+                        <h3>Send us a Message</h3>
+                        <form id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" placeholder="First Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Last Name" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" placeholder="Email Address" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <select required>
+                                    <option value="">Select Subject</option>
+                                    <option value="membership">Membership Inquiry</option>
+                                    <option value="collaboration">Collaboration</option>
+                                    <option value="event">Event Information</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea placeholder="Your Message" rows="6" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Map Section -->
+    <section id="map-section" class="section">
+        <div class="container">
+            <h2 class="section-title">Find Us</h2>
+            <p class="section-subtitle">Visit our campus at the Euro-Mediterranean University of Fez</p>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <img src="assets/map-placeholder.jpg" alt="UEMF Location Map">
+                    <div class="map-overlay">
+                        <div class="location-info">
+                            <h3>UEMF Campus</h3>
+                            <p>Euro-Mediterranean University of Fez</p>
+                            <p>Fès, Morocco</p>
+                            <a href="https://maps.google.com" target="_blank" class="btn btn-outline">
+                                <i class="fas fa-directions"></i>
+                                Get Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="contact-faq" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Common Questions</h2>
+            <p class="section-subtitle">Quick answers to frequently asked questions</p>
+            
+            <div class="faq-grid">
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <h3>How can I join AVN?</h3>
+                        <p>You can join AVN by filling out the membership form on our Members page. All UEMF students are welcome to apply.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Do I need technical background to join?</h3>
+                        <p>No! We welcome students from all backgrounds. We provide training and workshops to help you get started.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>When are your meetings?</h3>
+                        <p>We hold regular meetings every Wednesday at 6:00 PM. Check our Events page for the latest schedule.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-column">
+                    <div class="faq-item">
+                        <h3>Can organizations partner with AVN?</h3>
+                        <p>Yes! We welcome partnerships with organizations. Please contact us to discuss collaboration opportunities.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>How can I support AVN?</h3>
+                        <p>You can support AVN by joining our projects, participating in events, or sharing our initiatives with others.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h3>Who can I contact for press inquiries?</h3>
+                        <p>For press and media inquiries, please email avn@uemf.org with "Press" in the subject line.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact-cta" class="section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Make an Impact?</h2>
+                <p class="cta-description">Join our community of innovators and help shape the future of technology.</p>
+                <div class="cta-buttons">
+                    <a href="members.html" class="btn btn-primary">Join AVN</a>
+                    <a href="projects.html" class="btn btn-secondary">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">AVN</div>
+                    </div>
+                    <p class="footer-description">Association of Visionary Navigators at UEMF - Bridging technology and innovation for a better future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <!-- admin/login removed -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> avn@uemf.org</p>
+                        <p><i class="fas fa-map-marker-alt"></i> UEMF, Fès, Morocco</p>
+                        <p><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AVN Club - All Rights Reserved. Designed by AVN Creative Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

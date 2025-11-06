@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lumed - Association of Visionary Navigators</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="lumed-logo">
+                <div class="logo-circle"></div>
+                <div class="logo-text">lumed</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="lumed Logo" class="nav-logo-img">
+                    <div class="logo-icon">lumed</div>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="members.html" class="nav-link">Members</a>
+                <a href="article.html" class="nav-link">article</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <label for="dark-mode-toggle" class="toggle-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-background" id="particles-js"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <div class="logo-circle-large"></div>
+                <h1 class="hero-title">lumed</h1>
+                <p class="hero-subtitle">Association lumed</p>
+            </div>
+            <h2 class="hero-slogan">Empowering the Future of Innovation and Technology</h2>
+            <p class="hero-description">A multidisciplinary club at UEMF uniting students from various fields to innovate, collaborate, and make real-world impact.</p>
+            <div class="hero-buttons">
+                <a href="contact.html" class="btn btn-primary">Join lumed</a>
+                <a href="projects.html" class="btn btn-secondary">Our Projects</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Preview -->
+    <section id="about-preview" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Focus Areas</h2>
+            <p class="section-subtitle">Bridging the gap between technology and innovation</p>
+            <div class="cards-container">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>Technology</h3>
+                            <p>Innovative solutions for modern challenges</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Technology</h3>
+                            <p>Our technology division focuses on developing innovative solutions, robotics, and sustainable technological advancements.</p>
+                            <a href="about.html#technology" class="btn-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <h3>Artificial Intelligence</h3>
+                            <p>Smart algorithms for advancement</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Artificial Intelligence</h3>
+                            <p>Our AI division explores machine learning applications in various domains and innovative solutions.</p>
+                            <a href="about.html#ai" class="btn-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="card-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3>Innovation</h3>
+                            <p>Creative thinking meets practical implementation</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <h3>Innovation</h3>
+                            <p>Our innovation division bridges creative ideas with practical solutions for real-world challenges.</p>
+                            <a href="about.html#innovation" class="btn-link">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Events -->
+    <section id="recent-events" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Recent Events</h2>
+            <p class="section-subtitle">Stay updated with our latest activities</p>
+            <div class="carousel-container">
+                <div class="carousel" id="events-carousel">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Events loaded via JavaScript -->
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-prev" id="prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-btn-next" id="next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators" id="carousel-indicators">
+                    <!-- Indicators loaded via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section id="featured-projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Innovation that makes a difference</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project1.jpg" alt="AI Platform">
+                    </div>
+                    <div class="project-content">
+                        <h3>AI Innovation Platform</h3>
+                        <p>Developing machine learning algorithms to assist in various domains and innovative solutions.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-number" data-target="85">0</span>
+                                <span class="stat-label">Accuracy %</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="12">0</span>
+                                <span class="stat-label">Team Members</span>
+                            </div>
+                        </div>
+                        <a href="projects.html#ai-platform" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project2.jpg" alt="Technology Robotics">
+                    </div>
+                    <div class="project-content">
+                        <h3>Technology Robotics</h3>
+                        <p>Designing and prototyping assistive robotic devices for various applications.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-number" data-target="3">0</span>
+                                <span class="stat-label">Prototypes</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="2">0</span>
+                                <span class="stat-label">Patents Filed</span>
+                            </div>
+                        </div>
+                        <a href="projects.html#robotics" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/project3.jpg" alt="Community Initiative">
+                    </div>
+                    <div class="project-content">
+                        <h3>Community Innovation Initiative</h3>
+                        <p>Providing technological services and education to communities in Fez.</p>
+                        <div class="project-stats">
+                            <div class="stat">
+                                <span class="stat-number" data-target="500">0</span>
+                                <span class="stat-label">People Reached</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number" data-target="15">0</span>
+                                <span class="stat-label">Volunteers</span>
+                            </div>
+                        </div>
+                        <a href="projects.html#community-initiative" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="projects.html" class="btn btn-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">What Our Members Say</h2>
+            <p class="section-subtitle">Hear from students who are shaping the future</p>
+            <div class="testimonials-carousel">
+                <div class="testimonial active">
+                    <div class="testimonial-content">
+                        <p>"AVN inspired me to merge technology and innovation. The interdisciplinary approach opened my eyes to innovative solutions for real-world challenges."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="assets/team1.jpg" alt="Sarah Benali">
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Benali</h4>
+                                <p>Technology Student, UEMF</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"Through AVN, I've collaborated with students from different fields on projects that have real impact. It's incredible to see principles applied to innovation."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="assets/team2.jpg" alt="Youssef Alami">
+                            </div>
+                            <div class="author-info">
+                                <h4>Youssef Alami</h4>
+                                <p>AI Engineering Student, UEMF</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"The networking opportunities at AVN connected me with professionals in both technology and innovation. It's a unique platform for interdisciplinary growth."</p>
+                        <div class="testimonial-author">
+                            <div class="author-image">
+                                <img src="assets/team3.jpg" alt="Lina Toumi">
+                            </div>
+                            <div class="author-info">
+                                <h4>Lina Toumi</h4>
+                                <p>Engineering Student, UEMF</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-nav">
+                    <button class="testimonial-btn active" data-index="0"></button>
+                    <button class="testimonial-btn" data-index="1"></button>
+                    <button class="testimonial-btn" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section id="partners" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Partners</h2>
+            <p class="section-subtitle">Collaborating for innovation and impact</p>
+            <div class="partners-grid">
+                <div class="partner-logo">
+                    <img src="assets/partner1.png" alt="UEMF">
+                </div>
+                <div class="partner-logo">
+                    <img src="assets/partner2.png" alt="Technology Partner">
+                </div>
+                <div class="partner-logo">
+                    <img src="assets/partner3.png" alt="Tech Company">
+                </div>
+                <div class="partner-logo">
+                    <img src="assets/partner4.png" alt="Research Institute">
+                </div>
+                <div class="partner-logo">
+                    <img src="assets/partner5.png" alt="Startup Incubator">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="section section-dark">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Join the Revolution of Innovation and Impact</h2>
+                <p class="cta-description">Be part of a community that's shaping the future through technology and collaboration.</p>
+                <div class="cta-buttons">
+                    <a href="members.html" class="btn btn-primary">Become a Member</a>
+                    <a href="projects.html" class="btn btn-secondary">Our Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section id="newsletter" class="section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest news, events, and opportunities.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <div class="form-group">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-icon">lumed</div>
+                    </div>
+                    <p class="footer-description">Association lumed at UEMF - Bridging technology and innovation for a better future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> lumed@uemf.org</p>
+                        <p><i class="fas fa-map-marker-alt"></i> UEMF, Fès, Morocco</p>
+                        <p><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 lumed Club - All Rights Reserved. Designed by lumed Creative Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</body>
+</html>

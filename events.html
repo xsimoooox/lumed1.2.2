@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - AVN</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== VARIABLES CSS ÉTENDUES ===== */
+        :root {
+            /* Couleurs principales - THÈME VIOLET */
+            --primary-color: #8B5CF6;
+            --secondary-color: #7C3AED;
+            --accent-color: #A78BFA;
+            --success-color: #10B981;
+            --warning-color: #F59E0B;
+            --error-color: #EF4444;
+            
+            /* Couleurs de fond - MODE SOMBRE */
+            --background-primary: #0f0f23;
+            --background-secondary: #1a1a2e;
+            --background-tertiary: #2d2b55;
+            --background-card: rgba(139, 92, 246, 0.05);
+            
+            /* Couleurs de texte */
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            --text-inverse: #0f172a;
+            
+            /* Couleurs de bordure */
+            --border-color: #374151;
+            --border-light: #4b5563;
+            --border-focus: #8B5CF6;
+            
+            /* Couleurs d'état */
+            --hover-color: #2d2b55;
+            --active-color: #3730a3;
+            --focus-color: rgba(139, 92, 246, 0.2);
+            
+            /* Typographie */
+            --font-family-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-family-secondary: 'Montserrat', sans-serif;
+            --font-family-mono: 'Courier New', monospace;
+            
+            /* Tailles de police */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-md: 1.125rem;
+            --font-size-lg: 1.25rem;
+            --font-size-xl: 1.5rem;
+            --font-size-2xl: 1.75rem;
+            --font-size-3xl: 2rem;
+            --font-size-4xl: 2.5rem;
+            --font-size-5xl: 3rem;
+            
+            /* Poids de police */
+            --font-weight-light: 300;
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            
+            /* Hauteurs de ligne */
+            --line-height-tight: 1.25;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.75;
+            
+            /* Espacements */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            --spacing-4xl: 6rem;
+            
+            /* Bordures */
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --border-radius-2xl: 24px;
+            --border-radius-full: 50%;
+            
+            /* Ombres */
+            --shadow-sm: 0 1px 3px rgba(139, 92, 246, 0.2);
+            --shadow-md: 0 4px 6px rgba(139, 92, 246, 0.25);
+            --shadow-lg: 0 10px 25px rgba(139, 92, 246, 0.3);
+            --shadow-xl: 0 20px 40px rgba(139, 92, 246, 0.35);
+            --shadow-inner: inset 0 2px 4px rgba(139, 92, 246, 0.1);
+            
+            /* Transitions */
+            --transition-fast: 0.15s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Z-index */
+            --z-negative: -1;
+            --z-base: 1;
+            --z-dropdown: 1000;
+            --z-sticky: 1020;
+            --z-fixed: 1030;
+            --z-modal: 1040;
+            --z-popover: 1050;
+            --z-tooltip: 1060;
+            --z-preloader: 9999;
+        }
+
+        /* ===== MODE CLAIR ===== */
+        [data-theme="light"] {
+            --background-primary: #fafafa;
+            --background-secondary: #ffffff;
+            --background-tertiary: #f1f5f9;
+            --background-card: rgba(139, 92, 246, 0.08);
+            
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --text-inverse: #ffffff;
+            
+            --border-color: #e2e8f0;
+            --border-light: #cbd5e1;
+            --border-focus: #8B5CF6;
+            
+            --hover-color: #f1f5f9;
+            --active-color: #e2e8f0;
+            --focus-color: rgba(139, 92, 246, 0.1);
+            
+            --shadow-sm: 0 1px 3px rgba(139, 92, 246, 0.1);
+            --shadow-md: 0 4px 6px rgba(139, 92, 246, 0.15);
+            --shadow-lg: 0 10px 25px rgba(139, 92, 246, 0.2);
+            --shadow-xl: 0 20px 40px rgba(139, 92, 246, 0.25);
+            --shadow-inner: inset 0 2px 4px rgba(139, 92, 246, 0.05);
+        }
+
+        /* ===== STYLES DE BASE ===== */
+        body {
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-normal);
+            color: var(--text-primary);
+            background-color: var(--background-primary);
+            margin: 0;
+            padding: 0;
+            transition: background-color var(--transition-normal), color var(--transition-normal);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section {
+            padding: var(--spacing-3xl) 0;
+        }
+
+        .section-dark {
+            background-color: var(--background-secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-3xl);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: var(--spacing-2xl);
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            border-radius: var(--border-radius-md);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* ===== PRELOADER ===== */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: var(--z-preloader);
+            transition: opacity var(--transition-slow);
+        }
+
+        .preloader-content {
+            text-align: center;
+        }
+
+        .avn-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--border-radius-full);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            animation: pulse 2s infinite;
+        }
+
+        .logo-text {
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-color);
+        }
+
+        .loading-bar {
+            width: 200px;
+            height: 4px;
+            background: var(--background-tertiary);
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+        }
+
+        .loading-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0%;
+            animation: loading 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            50% { width: 60%; }
+            100% { width: 100%; }
+        }
+
+        /* ===== NAVIGATION ===== */
+        #navbar {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: var(--z-fixed);
+            padding: var(--spacing-md) 0;
+            transition: all var(--transition-normal);
+        }
+
+        [data-theme="light"] #navbar {
+            background: rgba(250, 250, 250, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: var(--spacing-sm);
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+            transition: transform var(--transition-normal);
+        }
+
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text-nav {
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-bold);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            font-weight: var(--font-weight-medium);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            transition: all var(--transition-fast);
+            position: relative;
+            text-decoration: none;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+        }
+
+        #dark-mode-toggle {
+            display: none;
+        }
+
+        .toggle-label {
+            display: flex;
+            align-items: center;
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: var(--background-tertiary);
+            border-radius: 50px;
+            cursor: pointer;
+            padding: 5px;
+            transition: background var(--transition-normal);
+        }
+
+        .toggle-label i {
+            position: absolute;
+            transition: all var(--transition-normal);
+            font-size: var(--font-size-sm);
+        }
+
+        .toggle-label .fa-moon {
+            left: 8px;
+            color: var(--text-secondary);
+        }
+
+        .toggle-label .fa-sun {
+            right: 8px;
+            color: var(--text-secondary);
+        }
+
+        .toggle-ball {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: var(--primary-color);
+            border-radius: var(--border-radius-full);
+            transition: transform var(--transition-normal);
+        }
+
+        #dark-mode-toggle:checked + .toggle-label .toggle-ball {
+            transform: translateX(30px);
+        }
+
+        #dark-mode-toggle:checked + .toggle-label {
+            background: var(--background-tertiary);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            margin: 3px 0;
+            transition: var(--transition-normal);
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            text-align: center;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.1));
+            margin-top: 80px;
+        }
+
+        .page-header h1 {
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-4xl);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: var(--font-size-lg);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== COUNTDOWN ===== */
+        #countdown {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        /* Correction des couleurs pour le mode clair */
+        [data-theme="light"] #countdown {
+            background: linear-gradient(135deg, #6D28D9, #7C3AED);
+        }
+
+        [data-theme="light"] #countdown .countdown-info h2,
+        [data-theme="light"] #countdown .countdown-info h3,
+        [data-theme="light"] #countdown .countdown-info p,
+        [data-theme="light"] #countdown .event-details p,
+        [data-theme="light"] #countdown .countdown-timer h3,
+        [data-theme="light"] #countdown .timer-number,
+        [data-theme="light"] #countdown .timer-label {
+            color: white;
+        }
+
+        [data-theme="light"] #countdown .countdown-timer {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        [data-theme="light"] #countdown .timer-unit {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: center;
+        }
+
+        .countdown-info h2 {
+            color: white;
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .countdown-info h3 {
+            color: white;
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .countdown-info p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .event-details {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .event-details p {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .countdown-timer {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-xl);
+            border-radius: var(--border-radius-xl);
+            backdrop-filter: blur(10px);
+        }
+
+        .countdown-timer h3 {
+            color: white;
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-lg);
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .timer-unit {
+            background: rgba(255, 255, 255, 0.2);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+        }
+
+        .timer-number {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            color: white;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .timer-label {
+            font-size: var(--font-size-sm);
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+
+        /* ===== EVENTS FILTER ===== */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .filter-btn {
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            color: var(--text-secondary);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* ===== EVENTS GRID ===== */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .event-card {
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            height: 100%;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .event-header {
+            padding: var(--spacing-xl);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .event-date {
+            background: var(--primary-color);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            display: inline-block;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .event-card h3 {
+            color: var(--text-primary);
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .event-meta {
+            display: flex;
+            gap: var(--spacing-lg);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .event-body {
+            padding: var(--spacing-xl);
+        }
+
+        .event-description {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: var(--line-height-relaxed);
+            max-height: 4.5em; /* Limite la hauteur pour 3 lignes */
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Nombre de lignes à afficher */
+            line-clamp: 3; /* Standard property for compatibility */
+            -webkit-box-orient: vertical;
+        }
+
+        .event-media {
+            margin-top: var(--spacing-lg);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+        }
+
+        .event-media img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius-lg);
+            transition: transform var(--transition-normal);
+        }
+
+        .youtube-thumbnail {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-radius: var(--border-radius-lg);
+        }
+
+        .youtube-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal);
+        }
+
+        .youtube-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+
+        .youtube-thumbnail .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 0, 0, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition-normal);
+        }
+
+        .youtube-thumbnail .play-button i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .youtube-thumbnail:hover .play-button {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: #ff0000;
+        }
+
+        .event-media .youtube-placeholder {
+            background: #ff0000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+        }
+
+        .event-media .youtube-placeholder:hover {
+            background: #cc0000;
+            transform: scale(1.02);
+        }
+
+        .event-footer {
+            padding: var(--spacing-lg) var(--spacing-xl);
+            background: var(--background-secondary);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-type {
+            background: var(--background-tertiary);
+            color: var(--text-secondary);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: var(--spacing-3xl) auto 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--spacing-2xl);
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: var(--spacing-2xl);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: var(--spacing-2xl);
+        }
+
+        .timeline-date {
+            font-weight: var(--font-weight-bold);
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .timeline-content {
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-lg);
+            position: relative;
+            transition: all var(--transition-normal);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-color);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: var(--border-radius-full);
+            border: 4px solid var(--background-secondary);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: var(--border-radius-full);
+            border: 4px solid var(--background-secondary);
+        }
+
+        /* ===== REGISTRATION ===== */
+        .registration-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-2xl);
+            align-items: start;
+        }
+
+        .registration-info h2 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-2xl);
+        }
+
+        .registration-info p {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .benefits-list {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .benefit-item i {
+            color: var(--success-color);
+        }
+
+        .registration-form {
+            background: var(--background-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-xl);
+            padding: var(--spacing-2xl);
+        }
+
+        .registration-form h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-xl);
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: var(--background-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+            color: var(--text-primary);
+            font-size: var(--font-size-base);
+            transition: all var(--transition-normal);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* ===== FOOTER ===== */
+        #footer {
+            background: var(--background-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: var(--spacing-3xl) 0 var(--spacing-xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .footer-logo {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-description {
+            margin-bottom: var(--spacing-lg);
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--background-tertiary);
+            border-radius: var(--border-radius-md);
+            color: var(--text-secondary);
+            transition: all var(--transition-normal);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-section h3 {
+            margin-bottom: var(--spacing-lg);
+            font-size: var(--font-size-lg);
+            color: var(--text-primary);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: color var(--transition-fast);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .contact-info i {
+            width: 20px;
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: var(--spacing-xl);
+            right: var(--spacing-xl);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            opacity: 0;
+            visibility: hidden;
+            z-index: var(--z-tooltip);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* ===== MESSAGES ===== */
+        .no-events-message {
+            text-align: center;
+            padding: var(--spacing-3xl) var(--spacing-md);
+            grid-column: 1 / -1;
+        }
+
+        .no-events-message i {
+            font-size: var(--font-size-4xl);
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .no-events-message h3 {
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .no-events-message p {
+            color: var(--text-muted);
+        }
+
+        .loading-message {
+            text-align: center;
+            padding: var(--spacing-2xl);
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                background: var(--background-secondary);
+                width: 80%;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding: var(--spacing-2xl) 0;
+                transition: var(--transition-normal);
+                border-left: 1px solid var(--border-color);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .countdown-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+            
+            .timer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .events-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -40px;
+                right: auto;
+            }
+            
+            .registration-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                gap: var(--spacing-sm);
+            }
+            
+            .filter-btn {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: var(--font-size-sm);
+            }
+
+            .logo-text-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="lumed-logo">
+                <div class="logo-circle"></div>
+                <div class="logo-text">lumed</div>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Preloader theme & hide handled globally by js/main.js -->
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/logo.png" alt="AVN Logo" class="logo-image">
+                    <div class="logo-text-nav">AVN</div>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="events.html" class="nav-link active">Events</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="members.html" class="nav-link">Members</a>
+                <a href="article.html" class="nav-link">article</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <label for="dark-mode-toggle" class="toggle-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>AVN Events</h1>
+            <p>Join our workshops, seminars, hackathons, and networking events</p>
+        </div>
+    </section>
+
+    <!-- Upcoming Event Countdown -->
+    <section id="countdown" class="section">
+        <div class="container">
+            <div class="countdown-content">
+                <div class="countdown-info">
+                    <h2>Next Big Event</h2>
+                    <h3 id="next-event-title">Tech Innovation Summit 2024</h3>
+                    <p id="next-event-description">Join us for our annual summit featuring keynote speakers, workshops, and project showcases from the intersection of technology and innovation.</p>
+                    <div class="event-details">
+                        <p><i class="fas fa-calendar"></i> <span id="next-event-date">March 15-16, 2024</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span id="next-event-location">UEMF Innovation Center</span></p>
+                        <p><i class="fas fa-users"></i> <span id="next-event-attendees">200+ Participants Expected</span></p>
+                    </div>
+                    <a href="#register" class="btn btn-primary">Register Now</a>
+                </div>
+                <div class="countdown-timer">
+                    <h3>Event Starts In:</h3>
+                    <div class="timer-grid">
+                        <div class="timer-unit">
+                            <div class="timer-number" id="days">00</div>
+                            <div class="timer-label">Days</div>
+                        </div>
+                        <div class="timer-unit">
+                            <div class="timer-number" id="hours">00</div>
+                            <div class="timer-label">Hours</div>
+                        </div>
+                        <div class="timer-unit">
+                            <div class="timer-number" id="minutes">00</div>
+                            <div class="timer-label">Minutes</div>
+                        </div>
+                        <div class="timer-unit">
+                            <div class="timer-number" id="seconds">00</div>
+                            <div class="timer-label">Seconds</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Filter -->
+    <section id="events-filter" class="section">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Events</button>
+                <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+                <button class="filter-btn" data-filter="past">Past Events</button>
+                <button class="filter-btn" data-filter="workshop">Workshops</button>
+                <button class="filter-btn" data-filter="conference">Conferences</button>
+                <button class="filter-btn" data-filter="competition">Competitions</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Grid -->
+    <section id="events-grid" class="section section-dark">
+        <div class="container">
+            <div class="events-container" id="events-container">
+                <!-- Les événements seront chargés dynamiquement ici -->
+                <div class="loading-message">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    Chargement des événements...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- No Events Message -->
+    <section id="no-events" class="section" style="display: none;">
+        <div class="container">
+            <div class="no-events-message">
+                <i class="fas fa-calendar-times"></i>
+                <h3>No events available</h3>
+                <p>Check back later for upcoming events or visit our gallery to see past events.</p>
+                <a href="gallery.html" class="btn btn-primary" style="margin-top: 20px;">
+                    <i class="fas fa-images"></i> Visit Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Timeline -->
+    <section id="event-timeline" class="section">
+        <div class="container">
+            <h2 class="section-title">Event Timeline</h2>
+            <p class="section-subtitle">Our journey through major events and milestones</p>
+            
+            <div class="timeline" id="events-timeline">
+                <!-- Timeline sera remplie dynamiquement -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="section section-dark">
+        <div class="container">
+            <div class="registration-content">
+                <div class="registration-info">
+                    <h2>Register for Events</h2>
+                    <p>Stay updated with our latest events and secure your spot for upcoming workshops and conferences.</p>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Early access to event registration</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Exclusive member discounts</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Priority seating at conferences</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Networking opportunities</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="registration-form">
+                    <h3>Event Registration</h3>
+                    <form id="event-registration-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="event-select" required>
+                                <option value="">Select Event</option>
+                                <!-- Les événements seront ajoutés dynamiquement -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Additional Notes (Optional)" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Register Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-text-nav">AVN</div>
+                    </div>
+                    <p class="footer-description">Association of Visionary Navigators at UEMF - Bridging technology and innovation for a better future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="members.html">Members</a></li>
+                        <li><a href="article.html" >article</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> avn@uemf.org</p>
+                        <p><i class="fas fa-map-marker-alt"></i> UEMF, Fès, Morocco</p>
+                        <p><i class="fas fa-clock"></i> Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AVN Club - All Rights Reserved. Designed by AVN Creative Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="js/content.js"></script>
+    <script>
+        // Gestion du preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                    setTimeout(() => {
+                        if (preloader.parentNode) {
+                            preloader.parentNode.removeChild(preloader);
+                        }
+                    }, 500);
+                }
+            }, 1000);
+        });
+
+        // Fallback au cas où l'événement load ne se déclenche pas
+        setTimeout(function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader && preloader.style.opacity !== '0') {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                setTimeout(() => {
+                    if (preloader.parentNode) {
+                        preloader.parentNode.removeChild(preloader);
+                    }
+                }, 500);
+            }
+        }, 3000);
+
+        // Navigation mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            // Back to top button
+            const backToTop = document.getElementById('back-to-top');
+            if (backToTop) {
+                window.addEventListener('scroll', function() {
+                    if (window.pageYOffset > 300) {
+                        backToTop.classList.add('show');
+                    } else {
+                        backToTop.classList.remove('show');
+                    }
+                });
+                
+                backToTop.addEventListener('click', function() {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+
+            // Gestion du thème
+            const toggle = document.getElementById('dark-mode-toggle');
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            
+            // Appliquer le thème sauvegardé
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            
+            if (toggle) {
+                toggle.checked = savedTheme === 'dark';
+                
+                toggle.addEventListener('change', function() {
+                    const theme = this.checked ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', theme);
+                    localStorage.setItem('theme', theme);
+                });
+            }
+
+            // Charger les événements
+            loadEvents();
+            setupEventFilters();
+            setupRegistrationForm();
+            startCountdown();
+        });
+
+        // Charger les événements depuis le localStorage
+        function loadEvents() {
+            const events = JSON.parse(localStorage.getItem('avnEvents')) || [];
+            const eventsContainer = document.getElementById('events-container');
+            const noEventsSection = document.getElementById('no-events');
+            const eventSelect = document.getElementById('event-select');
+            
+            console.log('Loading events:', events);
+
+            // Mettre à jour la sélection d'événements pour le formulaire d'inscription
+            updateEventSelect(events, eventSelect);
+            
+            // Mettre à jour le prochain événement pour le compte à rebours
+            updateNextEvent(events);
+            
+            // Mettre à jour la timeline
+            updateTimeline(events);
+
+            if (events.length === 0) {
+                eventsContainer.style.display = 'none';
+                noEventsSection.style.display = 'block';
+                return;
+            }
+
+            noEventsSection.style.display = 'none';
+            eventsContainer.style.display = 'grid';
+
+            let eventsHTML = '';
+            
+            // Trier les événements par date (du plus récent au plus ancien)
+            const sortedEvents = events.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            sortedEvents.forEach(event => {
+                const eventDate = new Date(event.date);
+                const now = new Date();
+                const isUpcoming = eventDate > now;
+                const eventType = event.type || 'general';
+                let mediaHTML = '';
+                if (event.mediaType && event.mediaType !== 'none') {
+                    if (event.mediaType === 'youtube' && event.mediaUrl) {
+                        // Extract video ID from YouTube URL
+                        const videoId = event.mediaUrl.match(/(?:embed\/|v=|\/)([\w-]+)(?:\?|$)/)?.[1];
+                        if (videoId) {
+                            mediaHTML = `
+                                <div class="event-media">
+                                    <a href="${event.mediaUrl}" target="_blank" class="youtube-thumbnail">
+                                        <img src="https://img.youtube.com/vi/${videoId}/maxresdefault.jpg" 
+                                             onerror="this.src='https://img.youtube.com/vi/${videoId}/0.jpg'"
+                                             alt="YouTube Video Thumbnail">
+                                        <div class="play-button">
+                                            <i class="fab fa-youtube"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            `;
+                        }
+                    } else if (event.mediaUrl && event.mediaType === 'image') {
+                        mediaHTML = `
+                            <div class="event-media">
+                                <img src="${event.mediaUrl}" alt="${event.title}">
+                            </div>
+                        `;
+                    }
+                }
+                eventsHTML += `
+                    <div class="event-card" data-type="${eventType}" data-date="${event.date}" data-upcoming="${isUpcoming}" style="cursor:pointer" onclick="window.location.href='event-details.html?id=${event.id}'">
+                        <div class="event-header">
+                            <div class="event-date">${eventDate.toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</div>
+                            <h3>${event.title}</h3>
+                            <div class="event-meta">
+                                <span><i class="fas fa-tag"></i> ${event.type}</span>
+                                <span><i class="fas fa-layer-group"></i> ${event.category}</span>
+                                ${event.location ? `<span><i class="fas fa-map-marker-alt"></i> ${event.location}</span>` : ''}
+                            </div>
+                        </div>
+                        <div class="event-body">
+                            <p class="event-description">${event.description}</p>
+                            ${mediaHTML}
+                        </div>
+                        <div class="event-footer">
+                            <span class="event-type">${event.type}</span>
+                            ${isUpcoming ? '<span style="color: var(--success-color); font-weight: var(--font-weight-medium);"><i class="fas fa-clock"></i> Upcoming</span>' : '<span style="color: var(--text-muted); font-weight: var(--font-weight-medium);"><i class="fas fa-check-circle"></i> Past Event</span>'}
+                        </div>
+                    </div>
+                `;
+            });
+
+            eventsContainer.innerHTML = eventsHTML;
+            
+            // Appliquer le filtre actuel
+            applyCurrentFilter();
+        }
+
+        function updateEventSelect(events, selectElement) {
+            // Vider les options existantes (sauf la première)
+            while (selectElement.children.length > 1) {
+                selectElement.removeChild(selectElement.lastChild);
+            }
+            
+            // Ajouter les événements à venir
+            const now = new Date();
+            const upcomingEvents = events.filter(event => new Date(event.date) > now);
+            
+            upcomingEvents.forEach(event => {
+                const option = document.createElement('option');
+                option.value = event.id;
+                option.textContent = event.title;
+                selectElement.appendChild(option);
+            });
+        }
+
+        function updateNextEvent(events) {
+            const now = new Date();
+            const upcomingEvents = events.filter(event => new Date(event.date) > now);
+            
+            if (upcomingEvents.length > 0) {
+                // Trouver le prochain événement (le plus proche dans le temps)
+                const nextEvent = upcomingEvents.reduce((closest, event) => {
+                    const eventDate = new Date(event.date);
+                    const closestDate = new Date(closest.date);
+                    return eventDate < closestDate ? event : closest;
+                });
+                
+                document.getElementById('next-event-title').textContent = nextEvent.title;
+                document.getElementById('next-event-description').textContent = nextEvent.description;
+                document.getElementById('next-event-date').textContent = new Date(nextEvent.date).toLocaleDateString('fr-FR', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                document.getElementById('next-event-location').textContent = nextEvent.location || 'UEMF Innovation Center';
+                
+                // Mettre à jour le compte à rebours avec la date du prochain événement
+                window.nextEventDate = new Date(nextEvent.date);
+            } else {
+                // Aucun événement à venir, utiliser une date par défaut
+                window.nextEventDate = new Date('2024-03-15');
+            }
+        }
+
+        function updateTimeline(events) {
+            const timeline = document.getElementById('events-timeline');
+            
+            if (events.length === 0) {
+                timeline.innerHTML = '<p style="text-align: center; color: var(--text-tertiary);">No events to display in timeline.</p>';
+                return;
+            }
+            
+            // Trier les événements par date (du plus récent au plus ancien)
+            const sortedEvents = events.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            let timelineHTML = '';
+            
+            // Prendre les 5 événements les plus récents pour la timeline
+            const recentEvents = sortedEvents.slice(0, 5);
+            
+            recentEvents.forEach((event, index) => {
+                const eventDate = new Date(event.date);
+                const dateString = eventDate.toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' });
+                
+                timelineHTML += `
+                    <div class="timeline-item">
+                        <div class="timeline-date">${dateString}</div>
+                        <div class="timeline-content">
+                            <h3>${event.title}</h3>
+                            <p>${event.description}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            timeline.innerHTML = timelineHTML;
+        }
+
+        function setupEventFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Mettre à jour les boutons actifs
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+                    localStorage.setItem('eventsFilter', filter);
+                    
+                    applyEventsFilter(filter);
+                });
+            });
+
+            // Appliquer le filtre sauvegardé
+            const savedFilter = localStorage.getItem('eventsFilter') || 'all';
+            const savedButton = document.querySelector(`[data-filter="${savedFilter}"]`);
+            if (savedButton) {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                savedButton.classList.add('active');
+                applyEventsFilter(savedFilter);
+            }
+        }
+
+        function applyEventsFilter(filter) {
+            const eventCards = document.querySelectorAll('.event-card');
+            const now = new Date();
+            
+            eventCards.forEach(card => {
+                const eventType = card.getAttribute('data-type');
+                const eventDate = new Date(card.getAttribute('data-date'));
+                const isUpcoming = card.getAttribute('data-upcoming') === 'true';
+                
+                let show = false;
+                
+                switch(filter) {
+                    case 'all':
+                        show = true;
+                        break;
+                    case 'upcoming':
+                        show = isUpcoming;
+                        break;
+                    case 'past':
+                        show = !isUpcoming;
+                        break;
+                    case 'workshop':
+                        show = eventType === 'workshop';
+                        break;
+                    case 'conference':
+                        show = eventType === 'conference';
+                        break;
+                    case 'competition':
+                        show = eventType === 'competition';
+                        break;
+                    default:
+                        show = true;
+                }
+                
+                card.style.display = show ? 'block' : 'none';
+            });
+        }
+
+        function applyCurrentFilter() {
+            const currentFilter = localStorage.getItem('eventsFilter') || 'all';
+            applyEventsFilter(currentFilter);
+        }
+
+        function setupRegistrationForm() {
+            const form = document.getElementById('event-registration-form');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Récupérer les données du formulaire
+                const name = form.querySelector('input[type="text"]').value;
+                const email = form.querySelector('input[type="email"]').value;
+                const eventId = form.querySelector('select').value;
+                const notes = form.querySelector('textarea').value;
+                
+                // Simuler l'envoi des données
+                console.log('Registration submitted:', { name, email, eventId, notes });
+                
+                // Afficher un message de confirmation
+                alert('Thank you for your registration! We will contact you soon with more details.');
+                
+                // Réinitialiser le formulaire
+                form.reset();
+            });
+        }
+
+        function startCountdown() {
+            // Utiliser la date du prochain événement ou une date par défaut
+            const countdownDate = window.nextEventDate || new Date('2024-03-15');
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countdownDate.getTime() - now;
+                
+                // Calculs pour jours, heures, minutes et secondes
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Mettre à jour l'affichage
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+                
+                // Si le compte à rebours est terminé
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                }
+            }
+            
+            // Mettre à jour immédiatement puis toutes les secondes
+            updateCountdown();
+            const countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        // Recharger les événements quand on revient sur la page
+        window.addEventListener('focus', function() {
+            loadEvents();
+        });
+
+        // Rafraîchir les événements toutes les 30 secondes pour les mises à jour en temps réel
+        setInterval(loadEvents, 30000);
+    </script>
+</body>
+</html>
