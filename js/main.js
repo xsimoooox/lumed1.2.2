@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Admin/login pages removed — authentication code omitted
 
-    // ==================== PAGE ACCUEIL (index.html) ====================
+    // ==================== HOME PAGE (index.html) ====================
 
     // Events Carousel
     const carouselTrack = document.getElementById('carousel-track');
@@ -391,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             if (filteredEvents.length === 0) {
-                eventsContainer.innerHTML = '<p class="no-events">Aucun événement trouvé pour ce filtre.</p>';
+                eventsContainer.innerHTML = '<p class="no-events">No events found for this filter.</p>';
                 return;
             }
             
@@ -551,7 +551,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(section);
     });
 
-    // Initialize Particles.js for hero background (page d'accueil)
+    // Initialize Particles.js for hero background (home page)
     if (typeof particlesJS !== 'undefined' && document.getElementById('particles-js')) {
         particlesJS('particles-js', {
             particles: {

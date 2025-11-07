@@ -87,7 +87,7 @@ function loadArticlesPublic(containerId = 'articles-list') {
                     <h3>${article.title}</h3>
                     <p>${article.summary || ''}</p>
                     <div class="article-footer">
-                        <a href="article-details.html?id=${article.id}" class="btn btn-outline">Voir détails</a>
+                        <a href="article-details.html?id=${article.id}" class="btn btn-outline">View Details</a>
                         ${article.mediaType === 'youtube' ? '<span class="video-badge"><i class="fas fa-play"></i> Vidéo</span>' : ''}
                     </div>
                 </div>
@@ -115,33 +115,33 @@ function seedCustomContent() {
     if (!events.some(e => String(e.id) === 'event_seed1')) {
         toAddEvents.push({
             id: 'event_seed1',
-            title: 'Conférence: Technologies et Société',
+            title: 'Conference: Technology and Society',
             date: '2025-12-05',
             time: '10:00 - 16:00',
             type: 'conference',
             category: 'technology',
             location: 'UEMF Grand Hall',
             capacity: '300 participants',
-            description: 'Une conférence rassemblant experts et étudiants pour discuter de l\'impact des technologies sur la société.',
-            detailedDescription: `Conférence principale sur l'impact des technologies et des médias numériques.
+            description: 'A conference bringing together experts and students to discuss the impact of technology on society.',
+            detailedDescription: `Main conference on the impact of technology and digital media.
 
-Programme :
-- Keynotes par des chercheurs et professionnels
-- Panels de discussion
-- Sessions Q&A
+Program:
+- Keynotes by researchers and professionals
+- Discussion panels
+- Q&A Sessions
 
-Cette session mettra en lumière des approches responsables et des cas d\'usage concrets.`,
+This session will highlight responsible approaches and concrete use cases.`,
             schedule: [
-                { time: '10:00', activity: 'Accueil et ouverture' },
-                { time: '10:30', activity: 'Keynote: L\'IA pour le bien commun' },
-                { time: '12:00', activity: 'Panel: éthique et technologie' },
-                { time: '14:00', activity: 'Ateliers' },
-                { time: '16:00', activity: 'Clôture' }
+                { time: '10:00', activity: 'Welcome and Opening' },
+                { time: '10:30', activity: 'Keynote: AI for the Common Good' },
+                { time: '12:00', activity: 'Panel: Ethics and Technology' },
+                { time: '14:00', activity: 'Workshops' },
+                { time: '16:00', activity: 'Closing' }
             ],
             objectives: [
-                'Comprendre les enjeux sociétaux des nouvelles technologies',
-                'Rencontrer des experts du domaine',
-                'Découvrir des opportunités de projet'
+                'Understand societal challenges of new technologies',
+                'Meet domain experts',
+                'Discover project opportunities'
             ],
             mediaType: 'youtube',
             // Provided video (converted to embed URL)
@@ -154,14 +154,14 @@ Cette session mettra en lumière des approches responsables et des cas d\'usage 
     if (!events.some(e => String(e.id) === 'event_seed2')) {
         toAddEvents.push({
             id: 'event_seed2',
-            title: 'Atelier Pratique: Développement Web',
+            title: 'Practical Workshop: Web Development',
             date: '2025-11-20',
             time: '09:00 - 13:00',
             type: 'workshop',
             category: 'development',
             location: 'UEMF Lab 2',
             capacity: '40 participants',
-            description: 'Atelier hands-on pour apprendre les bases du développement web moderne.',
+            description: 'Hands-on workshop to learn the basics of modern web development.',
             mediaType: 'image',
             mediaUrl: 'assets/event-dev-workshop.jpg',
             createdAt: new Date().toISOString(),
@@ -172,14 +172,14 @@ Cette session mettra en lumière des approches responsables et des cas d\'usage 
     if (!events.some(e => String(e.id) === 'event_seed3')) {
         toAddEvents.push({
             id: 'event_seed3',
-            title: 'Soirée de Networking & Projets',
+            title: 'Networking & Projects Evening',
             date: '2025-11-28',
             time: '18:00 - 21:00',
             type: 'networking',
             category: 'community',
             location: 'UEMF Lounge',
             capacity: '150 participants',
-            description: 'Rencontrez des porteurs de projets, mentors et sponsors autour d\'un buffet.',
+            description: 'Meet project leaders, mentors and sponsors over refreshments.',
             mediaType: 'image',
             mediaUrl: 'assets/event-networking.jpg',
             createdAt: new Date().toISOString(),
@@ -200,19 +200,19 @@ Cette session mettra en lumière des approches responsables et des cas d\'usage 
     if (!articles.some(a => String(a.id) === 'article_seed1')) {
         toAddArticles.push({
             id: 'article_seed1',
-            title: 'Vidéo: L\'avenir de l\'IA',
+            title: 'Video: The Future of AI',
             category: 'Tech',
-            tags: ['IA', 'vidéo'],
+            tags: ['AI', 'video'],
             readingTime: 6,
-            summary: 'Une présentation vidéo sur les tendances clés en IA.',
-            content: `Regardez la vidéo ci‑dessous pour découvrir les dernières avancées en intelligence artificielle et leur impact possible.`,
+            summary: 'A video presentation on key AI trends.',
+            content: `Watch the video below to discover the latest advances in artificial intelligence and their potential impact.`,
             featuredImage: 'assets/article-ai-video.jpg',
             mediaType: 'youtube',
             mediaUrl: 'https://www.youtube.com/embed/8ngv3ZIvqDo',
             resources: [
-                { type: 'video', title: 'Vidéo complète', url: 'https://youtu.be/8ngv3ZIvqDo' }
+                { type: 'video', title: 'Full Video', url: 'https://youtu.be/8ngv3ZIvqDo' }
             ],
-            author: { name: 'Équipe lumed', role: 'Rédaction', avatar: 'assets/team1.jpg' },
+            author: { name: 'lumed Team', role: 'Editorial', avatar: 'assets/team1.jpg' },
             createdAt: new Date().toISOString()
         });
     }
@@ -220,12 +220,12 @@ Cette session mettra en lumière des approches responsables et des cas d\'usage 
     if (!articles.some(a => String(a.id) === 'article_seed2')) {
         toAddArticles.push({
             id: 'article_seed2',
-            title: 'Retour sur le Hackathon',
-            category: 'Événements',
-            tags: ['Hackathon', 'IA'],
+            title: 'Hackathon Recap',
+            category: 'Events',
+            tags: ['Hackathon', 'AI'],
             readingTime: 5,
-            summary: 'Résumé et photos du dernier hackathon organisé par le club.',
-            content: `Le hackathon a réuni des équipes motivées et a produit des prototypes intéressants.`,
+            summary: 'Summary and photos from the latest hackathon organized by the club.',
+            content: `The hackathon brought together motivated teams and produced interesting prototypes.`,
             featuredImage: 'assets/article-hackathon.jpg',
             mediaType: 'image',
             mediaUrl: 'assets/article-hackathon.jpg',
@@ -237,12 +237,12 @@ Cette session mettra en lumière des approches responsables et des cas d\'usage 
     if (!articles.some(a => String(a.id) === 'article_seed3')) {
         toAddArticles.push({
             id: 'article_seed3',
-            title: 'Nouveaux Projets Étudiants',
-            category: 'Projets',
-            tags: ['Projets', 'Étudiants'],
+            title: 'New Student Projects',
+            category: 'Projects',
+            tags: ['Projects', 'Students'],
             readingTime: 4,
-            summary: 'Découvrez quelques projets récents menés par nos étudiants.',
-            content: `Présentation de projets innovants réalisés cette année.`,
+            summary: 'Discover some recent projects led by our students.',
+            content: `Presentation of innovative projects completed this year.`,
             featuredImage: 'assets/article-projects.jpg',
             mediaType: 'image',
             mediaUrl: 'assets/article-projects.jpg',
