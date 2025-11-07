@@ -1,4 +1,4 @@
-// main.js - Script principal pour toutes les pages AVN
+// main.js - Script principal pour toutes les pages lumed
 document.addEventListener('DOMContentLoaded', function() {
     // ==================== FONCTIONNALITÉS GLOBALES ====================
     
@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    console.log('AVN Website loaded successfully!');
+    console.log('lumed Website loaded successfully!');
 });
 
 // Gestion du rechargement de la page pour maintenir la position
