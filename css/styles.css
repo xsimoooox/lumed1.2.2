@@ -1484,6 +1484,14 @@ pre code {
     margin-bottom: var(--spacing-2xl);
 }
 
+.footer-section {
+    transition: transform var(--transition-normal);
+}
+
+.footer-section:hover {
+    transform: translateY(-5px);
+}
+
 .footer-section h3 {
     margin-bottom: var(--spacing-lg);
     font-size: var(--font-size-lg);
@@ -1491,7 +1499,30 @@ pre code {
 }
 
 .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
     margin-bottom: var(--spacing-lg);
+}
+
+.footer-logo img {
+    height: 40px;
+    width: auto;
+    transition: transform var(--transition-normal);
+}
+
+.footer-logo img:hover {
+    transform: scale(1.1);
+}
+
+.footer-logo .logo-text-nav {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-md);
 }
 
 .footer-description {
@@ -1558,6 +1589,14 @@ pre code {
     border-top: 1px solid var(--border-color);
     color: var(--text-muted);
     font-size: var(--font-size-sm);
+}
+
+.footer-bottom p {
+    background: linear-gradient(135deg, var(--text-secondary), var(--text-muted));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: var(--font-weight-medium);
 }
 
 /* Back to Top Button */
@@ -5150,4 +5189,29 @@ select:focus-visible {
 
 .action-card:nth-child(4) {
     animation-delay: 0.4s;
+}
+
+/* ===== STYLE GLOBAL DU LOGO ===== */
+.logo-text-nav {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: lowercase;
+    letter-spacing: 1px;
+    transition: all var(--transition-normal);
+}
+
+.logo-text-nav:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive design pour le logo */
+@media (max-width: 768px) {
+    .logo-text-nav {
+        font-size: var(--font-size-xl);
+    }
 }

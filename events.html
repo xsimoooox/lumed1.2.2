@@ -330,12 +330,15 @@
         }
 
         .logo-text-nav {
-            font-size: var(--font-size-xl);
+            font-family: var(--font-family-primary);
+            font-size: var(--font-size-2xl);
             font-weight: var(--font-weight-bold);
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-transform: lowercase;
+            letter-spacing: 1px;
         }
 
         .nav-menu {
@@ -1363,6 +1366,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
+                        <img src="assets/logo.png" alt="lumed Logo">
                         <div class="logo-text-nav">lumed</div>
                     </div>
                     <p class="footer-description">Association of Visionary Navigators at UEMF - Bridging technology and innovation for a better future.</p>
