@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lumed - Association of Visionary Navigators</title>
+    <link rel="icon" href="assets/logo.png" type="image/png">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -134,7 +135,58 @@
             </div>
         </div>
     </section>
-
+    <!-- À ajouter après la section About Preview -->
+    <section id="live-stats" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Impact in Real-Time</h2>
+            <div class="live-stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number" data-target="250" data-suffix="+">0</div>
+                    <div class="stat-label">Active Members</div>
+                    <div class="stat-trend">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+15% this month</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div class="stat-number" data-target="42">0</div>
+                    <div class="stat-label">Ongoing Projects</div>
+                    <div class="stat-trend">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+8 new</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-number" data-target="156">0</div>
+                    <div class="stat-label">Events Hosted</div>
+                    <div class="stat-trend">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+23% growth</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-number" data-target="18">0</div>
+                    <div class="stat-label">Awards Won</div>
+                    <div class="stat-trend">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>+5 this year</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Recent Events -->
     <section id="recent-events" class="section section-dark">
         <div class="container">
@@ -288,7 +340,55 @@
             </div>
         </div>
     </section>
+    <!-- Achievements timeline (vertical layout) -->
+    <section id="achievements-timeline" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <p class="section-subtitle">Key milestones in our mission to innovate</p>
 
+            <div class="vertical-timeline" aria-hidden="false">
+                <div class="timeline-item">
+                    <div class="timeline-icon">2020</div>
+                    <div class="timeline-content">
+                        <h4>Foundation</h4>
+                        <p>lumed was established at UEMF</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">2021</div>
+                    <div class="timeline-content">
+                        <h4>First Hackathon</h4>
+                        <p>Hosted 100+ participants</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">2022</div>
+                    <div class="timeline-content">
+                        <h4>AI Lab Launch</h4>
+                        <p>Opened dedicated research facility</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">2023</div>
+                    <div class="timeline-content">
+                        <h4>International Recognition</h4>
+                        <p>Won Best Student Club Award</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item active">
+                    <div class="timeline-icon">2025</div>
+                    <div class="timeline-content">
+                        <h4>250+ Members</h4>
+                        <p>Growing community of innovators</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Partners -->
     <section id="partners" class="section">
         <div class="container">
@@ -327,7 +427,58 @@
             </div>
         </div>
     </section>
-
+    <!-- À ajouter avant le Newsletter -->
+    <section id="quick-actions" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Get Started Today</h2>
+            <div class="quick-actions-grid">
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h3>Join Our Community</h3>
+                    <p>Become a member and access exclusive resources</p>
+                    <a href="members.html" class="btn btn-primary">Apply Now</a>
+                    <div class="action-stats">
+                        <span><i class="fas fa-users"></i> 250+ members</span>
+                    </div>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Attend an Event</h3>
+                    <p>Join our next workshop or seminar</p>
+                    <a href="events.html" class="btn btn-primary">Browse Events</a>
+                    <div class="action-stats">
+                        <span><i class="fas fa-clock"></i> Next: March 15</span>
+                    </div>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Contribute to Projects</h3>
+                    <p>Collaborate on cutting-edge initiatives</p>
+                    <a href="projects.html" class="btn btn-primary">View Projects</a>
+                    <div class="action-stats">
+                        <span><i class="fas fa-project-diagram"></i> 15+ active</span>
+                    </div>
+                </div>
+                <div class="action-card">
+                    <div class="action-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Learn & Grow</h3>
+                    <p>Access workshops and training materials</p>
+                    <a href="#" class="btn btn-primary">Start Learning</a>
+                    <div class="action-stats">
+                        <span><i class="fas fa-book"></i> 50+ resources</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Newsletter -->
     <section id="newsletter" class="section">
         <div class="container">

@@ -678,3 +678,538 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+// ===== ENHANCED HOME PAGE FEATURES =====
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // ===== 1. ANIMATED STATISTICS COUNTER =====
+    function animateCounters() {
+        const counters = document.querySelectorAll('.stat-number[data-target]');
+        
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const suffix = counter.getAttribute('data-suffix') || '';
+                    const duration = 2000; // 2 seconds
+                    const steps = 60;
+                    const increment = target / steps;
+                    let current = 0;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            counter.textContent = target + suffix;
+                            clearInterval(timer);
+                        } else {
+                            counter.textContent = Math.floor(current) + suffix;
+                        }
+                    }, duration / steps);
+                    
+                    observer.unobserve(counter);
+                }
+            });
+        }, observerOptions);
+        
+        counters.forEach(counter => observer.observe(counter));
+    }
+    
+    // Initialize counter animation
+    animateCounters();
+    
+    // ===== 2. HORIZONTAL TIMELINE SCROLL INDICATOR =====
+    const timelineContainer = document.querySelector('.horizontal-timeline');
+    if (timelineContainer) {
+        // Add scroll indicators
+        const scrollLeftIndicator = document.createElement('div');
+        scrollLeftIndicator.className = 'timeline-scroll-indicator left';
+        scrollLeftIndicator.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        
+        const scrollRightIndicator = document.createElement('div');
+        scrollRightIndicator.className = 'timeline-scroll-indicator right';
+        scrollRightIndicator.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        
+        timelineContainer.appendChild(scrollLeftIndicator);
+        timelineContainer.appendChild(scrollRightIndicator);
+        
+        // Scroll functionality
+        scrollLeftIndicator.addEventListener('click', () => {
+            timelineContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+        
+        scrollRightIndicator.addEventListener('click', () => {
+            timelineContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+        
+        // Update indicator visibility
+        function updateScrollIndicators() {
+            const scrollLeft = timelineContainer.scrollLeft;
+            const maxScroll = timelineContainer.scrollWidth - timelineContainer.clientWidth;
+            
+            scrollLeftIndicator.style.display = scrollLeft > 10 ? 'flex' : 'none';
+            scrollRightIndicator.style.display = scrollLeft < maxScroll - 10 ? 'flex' : 'none';
+        }
+        
+        timelineContainer.addEventListener('scroll', updateScrollIndicators);
+        updateScrollIndicators();
+    }
+    
+    // ===== 3. LIVE ACTIVITY FEED =====
+    function initActivityFeed() {
+        const feedItems = document.querySelectorAll('.feed-item');
+        
+        // Like button functionality
+        feedItems.forEach(item => {
+            const likeBtn = item.querySelector('.feed-like');
+            if (likeBtn) {
+                likeBtn.addEventListener('click', function() {
+                    const currentCount = parseInt(this.textContent.match(/\d+/)[0]);
+                    const isLiked = this.classList.contains('liked');
+                    
+                    if (isLiked) {
+                        this.innerHTML = `<i class="fas fa-heart"></i> ${currentCount - 1}`;
+                        this.classList.remove('liked');
+                    } else {
+                        this.innerHTML = `<i class="fas fa-heart"></i> ${currentCount + 1}`;
+                        this.classList.add('liked');
+                        
+                        // Add animation
+                        this.style.transform = 'scale(1.2)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 200);
+                    }
+                });
+            }
+        });
+        
+        // Auto-refresh feed (simulate new activities)
+        function simulateNewActivity() {
+            const feed = document.querySelector('.activity-feed-container');
+            if (!feed) return;
+            
+            const activities = [
+                {
+                    avatar: 'assets/team3.jpg',
+                    name: 'Karim Toumi',
+                    action: 'started working on',
+                    content: 'Robotics Automation Project',
+                    time: 'Just now'
+                },
+                {
+                    icon: 'fa-lightbulb',
+                    name: 'New Idea',
+                    content: 'Community member suggested a blockchain workshop',
+                    time: 'Just now'
+                }
+            ];
+            
+            // This is just a placeholder - in production, you'd fetch from an API
+            // Uncomment to enable auto-refresh every 30 seconds
+            /*
+            setInterval(() => {
+                const randomActivity = activities[Math.floor(Math.random() * activities.length)];
+                // Add new activity to top of feed
+                console.log('New activity:', randomActivity);
+            }, 30000);
+            */
+        }
+        
+        simulateNewActivity();
+    }
+    
+    initActivityFeed();
+    
+    // ===== 4. TECHNOLOGY BADGES INTERACTIVE =====
+    const techBadges = document.querySelectorAll('.tech-badge');
+    techBadges.forEach(badge => {
+        badge.addEventListener('click', function() {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            ripple.className = 'badge-ripple';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+            
+            // Optional: Show more info about the technology
+            console.log('Technology selected:', this.textContent);
+        });
+    });
+    
+    // ===== 5. SUCCESS STORIES VIDEO MODAL =====
+    function initVideoModals() {
+        const playBtns = document.querySelectorAll('.play-btn');
+        
+        playBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const videoCard = this.closest('.story-card');
+                const videoThumb = videoCard.querySelector('.story-video img');
+                
+                if (videoThumb) {
+                    // In production, replace with actual video URL
+                    const videoUrl = videoThumb.getAttribute('data-video-url') || 
+                                   'https://www.youtube.com/embed/dQw4w9WgXcQ';
+                    
+                    // Create modal
+                    const modal = document.createElement('div');
+                    modal.className = 'video-modal';
+                    modal.innerHTML = `
+                        <div class="modal-backdrop"></div>
+                        <div class="modal-content">
+                            <button class="modal-close"><i class="fas fa-times"></i></button>
+                            <div class="video-container">
+                                <iframe src="${videoUrl}?autoplay=1" 
+                                        frameborder="0" 
+                                        allowfullscreen
+                                        allow="autoplay; encrypted-media">
+                                </iframe>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(modal);
+                    setTimeout(() => modal.classList.add('active'), 10);
+                    
+                    // Close modal
+                    const closeBtn = modal.querySelector('.modal-close');
+                    const backdrop = modal.querySelector('.modal-backdrop');
+                    
+                    function closeModal() {
+                        modal.classList.remove('active');
+                        setTimeout(() => modal.remove(), 300);
+                    }
+                    
+                    closeBtn.addEventListener('click', closeModal);
+                    backdrop.addEventListener('click', closeModal);
+                }
+            });
+        });
+    }
+    
+    initVideoModals();
+    
+    // ===== 6. QUICK ACTIONS CARDS TRACKING =====
+    const actionCards = document.querySelectorAll('.action-card');
+    actionCards.forEach(card => {
+        card.addEventListener('click', function(e) {
+            // Track which action was clicked
+            const actionTitle = this.querySelector('h3').textContent;
+            console.log('Action clicked:', actionTitle);
+            
+            // Add click effect
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 150);
+        });
+    });
+    
+    // ===== 7. SCROLL ANIMATIONS =====
+    function initScrollAnimations() {
+        const animatedElements = document.querySelectorAll(
+            '.stat-card, .feed-item, .action-card, .story-card, .tech-category'
+        );
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        animatedElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    }
+    
+    initScrollAnimations();
+    
+    // ===== 8. PARALLAX EFFECT FOR HERO SECTION =====
+    function initParallaxEffect() {
+        const heroSection = document.getElementById('hero');
+        if (!heroSection) return;
+        
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = heroSection.querySelectorAll('.hero-content, .hero-logo');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    }
+    
+    initParallaxEffect();
+    
+    // ===== 9. DYNAMIC GREETING BASED ON TIME =====
+    function setDynamicGreeting() {
+        const heroSlogan = document.querySelector('.hero-slogan');
+        if (!heroSlogan) return;
+        
+        const hour = new Date().getHours();
+        let greeting = 'Empowering the Future of Innovation and Technology';
+        
+        if (hour >= 5 && hour < 12) {
+            greeting = 'Good Morning! Ready to Innovate Today?';
+        } else if (hour >= 12 && hour < 18) {
+            greeting = 'Building Tomorrow\'s Technology Today';
+        } else if (hour >= 18 && hour < 22) {
+            greeting = 'Evening Innovation Sessions in Progress';
+        } else {
+            greeting = 'The Future Never Sleeps - Join Us!';
+        }
+        
+        // Optionally uncomment to use dynamic greeting
+        // heroSlogan.textContent = greeting;
+    }
+    
+    setDynamicGreeting();
+    
+    // ===== 10. TYPING EFFECT FOR HERO SUBTITLE =====
+    function initTypingEffect() {
+        const subtitle = document.querySelector('.hero-subtitle');
+        if (!subtitle) return;
+        
+        const text = subtitle.textContent;
+        const phrases = [
+            'Association lumed',
+            'Innovating Together',
+            'Building the Future',
+            'Technology Meets Creativity'
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                subtitle.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                subtitle.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+            
+            // Uncomment to enable typing effect
+            // setTimeout(type, typeSpeed);
+        }
+        
+        // Uncomment to start typing effect
+        // type();
+    }
+    
+    initTypingEffect();
+    
+    // ===== 11. SMOOTH SCROLL PROGRESS INDICATOR =====
+    function initScrollProgress() {
+        const progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress-bar';
+        document.body.appendChild(progressBar);
+        
+        window.addEventListener('scroll', function() {
+            const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.pageYOffset / windowHeight) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    }
+    
+    initScrollProgress();
+    
+    // ===== 12. EASTER EGG - KONAMI CODE =====
+    let konamiCode = [];
+    const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 
+                           'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 
+                           'b', 'a'];
+    
+    document.addEventListener('keydown', function(e) {
+        konamiCode.push(e.key);
+        konamiCode = konamiCode.slice(-10);
+        
+        if (konamiCode.join(',') === konamiPattern.join(',')) {
+            activateEasterEgg();
+        }
+    });
+    
+    function activateEasterEgg() {
+        // Add fun animation or special feature
+        document.body.style.animation = 'rainbow 2s linear infinite';
+        setTimeout(() => {
+            document.body.style.animation = '';
+            alert('🎉 You found the secret! Welcome to the lumed community!');
+        }, 3000);
+    }
+    
+    console.log('🚀 lumed Enhanced Home Page Loaded Successfully!');
+});
+
+// ===== ADDITIONAL CSS FOR VIDEO MODAL =====
+const style = document.createElement('style');
+style.textContent = `
+    .video-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .video-modal.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .modal-backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(5px);
+    }
+    
+    .video-modal .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 900px;
+        background: var(--background-secondary);
+        border-radius: var(--border-radius-xl);
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    .video-modal .modal-close {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 10001;
+        transition: transform 0.2s ease;
+    }
+    
+    .video-modal .modal-close:hover {
+        transform: scale(1.2) rotate(90deg);
+    }
+    
+    .video-modal .video-container {
+        padding-bottom: 56.25%;
+        position: relative;
+    }
+    
+    .video-modal .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .badge-ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(139, 92, 246, 0.5);
+        width: 0;
+        height: 0;
+        animation: ripple 0.6s ease-out;
+        pointer-events: none;
+    }
+    
+    @keyframes ripple {
+        to {
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+        }
+    }
+    
+    .scroll-progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        z-index: 9999;
+        transition: width 0.1s ease;
+    }
+    
+    .timeline-scroll-indicator {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+    }
+    
+    .timeline-scroll-indicator:hover {
+        background: var(--secondary-color);
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .timeline-scroll-indicator.left {
+        left: 10px;
+    }
+    
+    .timeline-scroll-indicator.right {
+        right: 10px;
+    }
+    
+    @keyframes rainbow {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
